@@ -1,0 +1,191 @@
+
+<span class="heading-md">The "file" Context</span>
+<hr />
+
+<p class="text-page">
+    The "file" Context of dashR is included for handling basic file operations. Load, save, remame, copy, delete, etc...
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">fso</span>;
+            <ul>
+                <li>.fso returns a <b>Windows Scripting File System Object</b></li>
+            </ul>
+
+    </div>    
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">exists</span> (<span class="param">fileSpec</span>);
+            <ul>
+                <li>The <b>fileSpec</b> to test for exists on the computer.</li>
+            </ul>
+
+    </div>
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">get</span> (<span class="param">fileSpec</span>);
+            <ul>
+                <li>The <b>fileSpec</b> is the file to load on the computer .</li>
+                <li>The <b>Windows File Object</b> properties include:
+                    <div style="padding-left:16px;">
+                        .Attributes	<br>
+                        .DateCreated	<br>
+                        .DateLastAccessed<br>
+                        .DateLastModified<br>
+                        .Drive	<br>
+                        .Name	<br>
+                        .ParentFolder	<br>
+                        .Path	<br>
+                        .ShortName	<br>
+                        .ShortPath	<br>
+                        .Size	<br>
+                        .Type       <br>                 
+                    </div>
+
+                    
+                </li>
+            </ul>
+
+    </div>    
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">name</span> (<span class="param">fileSpec</span>);
+            <ul>
+                <li>This returns just the files <b>name</b>, no path or file extension.
+                <li>The <b>fileSpec</b> is the path to the file.</li>
+                
+            </ul>
+
+    </div>  
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">ext</span> (<span class="param">fileSpec</span>);
+            <ul>
+                <li>This returns just the files <b>extension</b>, without a period.
+                <li>The <b>fileSpec</b> is the path to the file.</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">load</span> (<span class="param">fileSpec</span>, <span class="param">into</span>[optional], <span class="param">separator</span>[optional]);
+            <ul>
+                <li>This returns either the contents of the file (usually text) or an array of lines split on the seperator</li>
+                <li>The <b>fileSpec</b> is the path to the file.</li>
+                <li>The parameter <b>into</b> is an optional array to fill.</li>
+                <li>The parameter <b>separator</b> is an optional character to split the file data on.</li>
+                <li>This is mostly just used to load text files</li>
+                <li>One potential use may be to read a file line by line, use the crlf (\r\n) to split the file <br> into an array and process each line</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">save</span> (<span class="param">fileSpec</span>, <span class="param">text</span>);
+            <ul>
+                <li>The <b>fileSpec</b> is the path to the file to save to.</li>
+                <li>The parameter <b>text</b> is the text to put in the file.</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">delete</span> (<span class="param">fileSpec</span>);
+            <ul>
+                <li>The <b>fileSpec</b> is the path to the file to delete.</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">copy</span> (<span class="param">source</span>, <span class="param">destination</span>, <span class="param">overwrite</span>[optional]);
+            <ul>
+                <li>The parameter <b>source</b> is the file to copy.</li>
+                <li>The parameter <b>destination</b> is a folder to copy the file to.</li>
+                <li>The optional boolean parameter <b>overwrite</b> specifies if the file <br>should be overwritten, if not provided it assumes true.</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">copy_to</span> (<span class="param">targetFolder</span>, <span class="param">sourceSpec</span>);
+            <ul>
+                <li>This function shows the Windows copy dialog window with a progress bar.</li>
+                <li>While the copy is in process the application will halt and not respond until it finishes.</li>
+                <li>The parameter <b>targetFolder</b> is where to copy to.</li>
+                <li>The parameter <b>sourceSpec</b> is what to copy (can be a file or folder).</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">rename</span> (<span class="param">fileSpec</span>, <span class="param">newfilename</span>);
+            <ul>
+                <li>The parameter <b>fileSpec</b> is the file to be renamed.</li>
+                <li>The parameter <b>newfilename</b> is the new name of the file.</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">download</span> (<span class="param">url</span>, <span class="param">fileSpec</span>, <span class="param">fnDone</span>);
+            <ul>
+                <li>The parameter <b>url</b> is the url of a file or image to download.</li>
+                <li>The parameter <b>fileSpec</b> is file location to save the downloaded file to.</li>
+                <li>The parameter <b>fnDone</b> is a function to call when the asyncronous operation is finished.</li>
+            </ul>
+
+    </div>  
+
+
+</p>
+
+<span class="heading-sm">Usage Examples</span>
+<hr />
+
+<pre class="language-javascript">
+
+</pre>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

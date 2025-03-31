@@ -1,0 +1,67 @@
+
+<span class="heading-md">The "email" Context</span>
+<hr />
+
+<p class="text-page">
+    The "email" Context of dashR is an extension Context that you may optionally include for sending an email via Windows PowerShell.
+</p>
+
+<p class="text-danger">
+    Use of this context is rare and thus it is NOT inclued in the extensions.js file. You must include it manually with a script tag.
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>xml</b>")</span>.<span class="method">power_shell.send</span> (<span class="param">config</span>, <span class="param">message</span>, <span class="param">folder</span>);
+            <ul>
+                <li>This function creates a PowerShell .ps1 file in the <b>folder</b> and sends an email with optional HTML and attachments.</li>
+                <li>This is actually creating a text file and running powershell the file name is the message.id which you may override if need be.</li>
+                <li>The location of powershell.exe is defaulted and specified in <b>config</b> and can be overridden.
+                <li>See the unminifed raw code in the files tab for more <b>config</b> and <b>message</b> options not shown here.</li>
+                <li>See below for an example.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .power_shell.send</span>
+        <hr />
+
+<b>JavaScript</b>
+
+<pre class="language-javascript">
+
+var config = new dashR("email").config(
+    "your_smtp_server", 
+    "your_smtp_user_name", 
+    "your_smtp_pass_word"
+);
+
+// override the default port of 587
+//config.port = 25;
+
+var message = new dashR("email").message(
+    "ezeglen@gmail.com",                // to
+    "ezeglen@twc.com",                  // from
+    "See Attached",                     // subject
+    "This is &lt;br&gt; a test"         // message HTML
+);
+
+// optionally turn off HTML in the body
+// message.isHTML = false; 
+
+// optionally add attachment(s)
+message.attachments.push(this.app.folder + "\\Data\\attachment1.txt");
+
+dashR("email").power_shell.send(config, message, this.app.folder);
+
+</pre>            
+
+    </div>
+           
+
+</p>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-30 by ECZ</div>

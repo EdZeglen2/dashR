@@ -1,0 +1,41 @@
+
+<span class="heading-md">The "file" Extension</span>
+<hr />
+
+<p class="text-page">
+    This codebase extends the basic "file" Context of dashR with more optional (non-standard file) functions for your applications.
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>file</b>")</span>.<span class="method">bytes_to_size</span> (<span class="param">len</span>);
+            <ul>
+                <li>This function returned a text formatted file size ( 2.3GB or 1B or 10.2MB)
+                <li>The parameter <b>len</b> is the size of the file in bytes.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .bytes_to_size</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+        var fileSpec = "c:\\mydocs\\myfile.text";
+        var file = dashR("file").get(fileSpec);
+
+        console.log( dashR("file").bytes_to_size(file.Size) );</pre>            
+
+    </div>
+            
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

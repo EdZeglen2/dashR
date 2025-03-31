@@ -1,0 +1,28 @@
+
+<span class="heading-md">The "app" Context</span>
+<hr />
+
+<p class="text-page">
+    The "app" Context of dashR is included primarily so you don't have to create it and for extending your application with your own functions. It contains no properties or methods of its own. 
+</p>
+
+<p class="text-page">
+    Example of a common use of the "app" context is to immedately extend it with your functions.
+</p>
+
+<pre class="language-javascript">
+
+// add a "email" method to the "app" context 
+dashR("app")["email"] = function () {
+    return {
+        send: function (to, messageBody) {
+            ...
+        }
+    }
+}
+
+// calling your function
+dashR("app").email.send("someone@nowhere.com", "hellow from someone to someone.");</pre>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

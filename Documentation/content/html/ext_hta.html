@@ -1,0 +1,56 @@
+
+<span class="heading-md">The "hta" Context</span>
+<hr />
+
+<p class="text-page">
+    The "hta" Context of dashR is an extension Context that you may optionally include for functions specifically related to HTAs. 
+        
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>hta</b>")</span>.<span class="method">command_line</span> (<span class="param">cmdLine</span>);
+            <ul>
+                <li>This function returns an array of the items passed into the HTA from the command line.</li>
+                <li>The parameter <b>text</b> is the command line from the starting of the .HTA file.</li>
+                <li><b>Important Note:</b> This removes the first parameter as it is the HTA file's name (which is useless as a parameter).</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .format</span>
+        <hr />
+
+        <b>HTML</b>
+<pre class="language-html">&lt;HTA:APPLICATION
+    ID="objFileLoader"
+    APPLICATIONNAME="fileLoader"
+    SCROLL="yes"
+    SINGLEINSTANCE="no"
+    WINDOWSTATE="minimize"
+    NAVIGABLE="yes"
+    ICON="myIcon.ico"
+&gt;</pre>
+        
+
+<b>JavaScript</b>
+
+<pre class="language-javascript">
+// parse the command line into an array. // ID Above = "objFileLoader"
+var params = jDash("hta").command_line(objFileLoader.commandLine); 
+if (params.length > 0) {            
+    // ... do stuff here ...
+}</pre>            
+
+    </div>
+            
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

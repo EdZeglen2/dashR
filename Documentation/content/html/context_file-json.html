@@ -1,0 +1,73 @@
+
+<span class="heading-md">The "json" Context</span>
+<hr />
+
+<p class="text-page">
+    The "json" Context of dashR is included for performing the loading and saving of JSON objects (and arrays) to and from local files.
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>json</b>")</span>.<span class="method">load</span> (<span class="param">fileSpec</span>, <span class="param">defObj</span>[optional]);
+            <ul>
+                <li>The <b>fileSpec</b> of the JSON file to load</li>
+                <li>When the file is not found (or is empty) the function returns the <b>defObj</b></li>
+            </ul>
+
+    </div>
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>json</b>")</span>.<span class="method">save</span> (<span class="param">fileSpec</span>, <span class="param">objOrArray</span>);
+            <ul>
+                <li>The <b>fileSpec</b> to save the data to</li>
+                <li><b>objOrArray</b> is the object (or array) to JSON.stringify into the file.</li>
+            </ul>
+
+    </div>    
+        
+
+</p>
+
+<span class="heading-sm">Usage Examples</span>
+<hr />
+
+<pre class="language-javascript">
+
+// save my items to a file for later.
+dashR("json").save("c:\\myfile1.json", this.items);
+
+// save the obj to a file for later.
+var obj1 = {
+    "name": "bob",
+    "id" : 0,
+    "cars": [
+        "porche", "bmw"
+    ]
+};
+
+dashR("json").save("c:\\myfile1.json", obj1);
+
+// === 
+
+// get me a list of items I saved before.
+// if the file does not exist, return and empty array.
+this.items = dashR("json").load("c:\\myfile1.json", []);
+
+// load my obj or return an empty one.
+var obj1 = dashR("json").load("c:\\myfile1.json", {
+    "name": "",
+    "id" : 0,
+    "cars": []    
+});</pre>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

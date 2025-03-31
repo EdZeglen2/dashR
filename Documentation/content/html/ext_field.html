@@ -1,0 +1,177 @@
+
+<span class="heading-md">The "field" Context</span>
+<hr />
+
+<p class="text-page">
+    The "field" Context of dashR is an extension Context that you may optionally include for form/input field validation.
+        
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>field</b>")</span>.<span class="method">validation</span> (<span class="param">scope</span>);
+            <ul>
+                <li>This can be used with a <b>Form</b> or just to validate input fields on a page (or in a modal).</li>
+                <li>The <b>scope</b> parameter limits the validation to a specific div or element defined in the page.</li>
+                <li>Special <b>.css</b> is needed to decorate the fields on <b>is-valid</b> and <b>is-invalid</b> states.</li>
+                <li>If the input fields are hidden in a tab or in a modal, you must <b>.parse()</b> each time the fields become visible.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .validation</span>
+        <hr />
+
+<b>CSS</b>        
+<pre class="language-css">
+
+.invalid-feedback {
+    color: red;
+}
+.is-valid {
+    border-color: #35dc45;
+    color: black;
+}
+.is-invalid {
+    border-color: #dc3545;
+    color: red;
+}    
+</pre>
+
+        <b>HTML</b>
+<pre class="language-html">
+ &lt;div class="panel panel-default"&gt;
+    &lt;div class="panel-body" id="validation_fields"&gt;
+
+        &lt;div class="row"&gt;
+            &lt;div class="col-sm-3"&gt;
+
+                &lt;label&gt;Name&lt;/label&gt;
+                &lt;input type="text" class="form-control" id="txtName" 
+                    fv-test required fv-blur="true"/&gt;&lt;br&gt;
+
+                &lt;label&gt;Email&lt;/label&gt;
+                &lt;input type="text" class="form-control" id="txtEmail"  
+                    fv-test required fv-email="true" fv-blur="true" 
+                    fv-message="What? Are you a moron?!" /&gt;&lt;br&gt;                                    
+
+                &lt;label&gt;Number&lt;/label&gt;
+                &lt;input type="text" class="form-control" 
+                    fv-test required fv-min="3" fv-type="numeric" fv-blur="true" /&gt;&lt;br&gt;      
+                
+                &lt;button class="btn" v-on:click="btnParse"&gt;Parse&lt;/button&gt;
+                &lt;button class="btn" v-on:click="btnSubmit"&gt;Submit&lt;/button&gt;&lt;br&gt;
+
+            &lt;/div&gt;
+            &lt;div class="col-sm-3"&gt;&lt;/div&gt;
+            &lt;div class="col-sm-3"&gt;&lt;/div&gt;
+            &lt;div class="col-sm-3"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<b>JavaScript</b>
+
+<pre class="language-javascript">
+
+btnSubmit: function () {
+
+    var element = this;
+
+    element.fv.parse();
+
+    element.fv.validate(function () {
+        // all validation passed, ok to proceed, save or POST data.
+
+        // ...        
+    }, function (errors) {
+        // At least one input failed validation
+        // errors is an array of parsed fields 
+        // you can optionally use to do more with in the UI
+    });
+
+},
+
+btnSubmit2: function () {
+
+    this.fv.parse();
+
+    if (this.fv.validate()) {
+        // all validation passed, ok to proceed, save or POST data.
+
+        // ...        
+    }
+
+},
+
+</pre>            
+
+<hr />
+
+    <b>More Usage Info...</b>
+
+<pre class="language-html">
+
+&lt;!--
+
+Usage:
+    add fv-test to any field to be tested.
+    add fv-message="message" to set a custom message.
+    add fv-email="true" for email validation.
+    add fv-blur="true" for immediate test validation when leaving the field.
+    add fv-inside="secionOrTabID" to know where an item is when it fails.
+    add fv-date="true" for date validation.
+    add required to any required field (text, or checkbox)
+    add fv-type="numeric", fv-type="alpha", fv-type="alphanumeric"
+    add fv-min="3" to force at least 3 chars.
+    add fv-max="10" to force limit at 10 chars.
+    add fv-regex="aregexexp" to force a pattern.
+    add fv-function="customFunc1" to call a custom global js function (see below)
+
+    // this example tests for dashes in the string.
+    function customFunc1(field, value) {
+        var isValid = true;
+        if (value.indexOf('-') != -1) {
+            isValid = false;
+        }
+        return {
+            isInvalid: !isValid,
+            field: field,
+            message: "Please remove any dashes."
+        }
+    }
+
+How to show a tab where an error is:
+
+    ... make sure you set the fv-inside="tab10" or whatever it is on each field
+
+    if (self.fv.errorFields.length > 0) {
+        var tabId = self.fv.errorFields[0].inside;
+        $('#' + tabId).click();
+    }
+
+Examples:
+    &lt;input type="text" class="form-control" fv-test required fv-email="true" /&gt;
+    &lt;input type="text" class="form-control" fv-test required fv-min="3" /&gt;
+    &lt;input type="text" class="form-control" fv-test fv-regex="^\d{3}-?\d{2}-?\d{4}$" 
+        fv-message="Enter your SSN with dashes" /&gt;    
+
+--&gt;        
+
+</pre>    
+
+    </div>
+            
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-26 by ECZ</div>
+

@@ -1,0 +1,692 @@
+<html id="912"> 
+<head> 
+<title>dashR Documentation</title> 
+
+    <meta http-equiv="x-ua-compatible" content="ie=9">
+
+    <!-- 
+    
+        Todo:
+        1. ducument how enums work.
+        2. check other contexts where enums make sense.
+    
+    -->
+ 
+<HTA:APPLICATION  
+    ID="objdashRDocs" 
+    APPLICATIONNAME="dashRDocs" 
+    SCROLL="yes" 
+    SINGLEINSTANCE="yes" 
+    WINDOWSTATE="maximize" 
+    NAVIGABLE="yes"
+    ICON="content/images/icons/folderdocuments.ico"
+> 
+    
+<link rel="stylesheet" href="content/scripts/bootstrap-3.3.6-dist/css/bootstrap.min.css" />    
+<link rel="stylesheet" href="content/scripts/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" href="content/css/app.css" />    
+
+<style>
+    .tbl1 {
+        width:100%;
+    }
+    .tbl1 tr {
+
+    }
+    .tbl1 td {
+        padding:3px;
+    }
+
+    hr {
+        margin-top:3px;
+        margin-bottom:10px;
+    }
+
+    .heading-lg {
+        color: #1f2328;
+        font-size: 22pt;   
+        margin-top:8px;
+        font-weight:bold;
+        /* margin-bottom:0px;
+        padding-bottom:0px; */
+    }
+
+    .heading-md {
+        color: #1f2328;
+        font-size: 18pt;   
+        font-weight:bold;
+    }    
+
+    .heading-sm {
+        color: #1f2328;
+        font-size: 14pt;   
+        font-weight:bold;
+    }        
+
+    .text-default {
+        color: #1f2328;
+        font-size:12pt;
+        padding:3px;
+        margin:1px;
+    }
+
+    .text-oage: {
+        color:
+    }
+
+    .code-main {
+        color: #339;
+        font-size:12pt;
+    }
+
+    .text-context {
+        color: rgb(0, 120, 215);
+    }
+
+    .method {
+        color:#2666cb;
+        font-weight:bold;
+    }
+
+    .param {
+        color: #3f9ccb;
+        font-weight:bold;
+    }
+
+    .dashr {
+        color: #339;
+    }
+
+    .doc-footer {
+        float:right;
+    }
+
+</style>
+
+    <script type="text/javascript" src="content/scripts/jQuery/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="content/scripts/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>        
+
+    <!-- Include jQuery Syntax Highlighter -->
+    <script type="text/javascript" src="content/scripts/jj.js"></script>
+    <!-- Initialise jQuery Syntax Highlighter -->
+    <script type="text/javascript">$.SyntaxHighlighter.init();</script>
+
+    <script type="text/javascript" src="content/scripts/Vue/Vue.js"></script>
+
+    <script type="text/javascript" src="../../Library/Dev/dashR-1.0.0-min.js"></script>
+    <script type="text/javascript" src="../../Library/Dev/extensions/extensions.js"></script>
+
+    <!-- // must be last? -->
+    <script type="text/javascript" src="content/scripts/htaconsole.js"></script>
+
+</head> 
+ 
+<body> 
+
+    <!-- MAIN APP -->
+
+    <div class="container" id="App">
+
+        <nav class="navbar navbar-default">
+            <div class="container" id="appHeader">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><b>dashR</b></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><p class="navbar-text">Library Documentation | 2024 | v1.0.0</p> </li>
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right" style="margin-right:16px;">
+                    <li  ><button class="btn btn-sm btn-primary navbar-btn" v-on:click="btnNewApp"><i class="fa fa-external-link-square"></i> New Application ...</button></li>
+                    
+                </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>        
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" id="tab1" href="#menu10"><span class="fa fa-home"></span> Library</a></li>
+                    <li><a data-toggle="tab" id="tab2" href="#menu20"><span class="fa fa-plug"></span> More Contexts</a></li>     
+                    <li><a data-toggle="tab" id="tab5" href="#menu50"><span class="fa fa-plus"></span> Context Extensions</a></li>                            
+                    <li><a data-toggle="tab" id="tab4" href="#menu40"><span class="fa fa-tag"></span> Elements</a></li>    
+                    <li><a data-toggle="tab" id="tab3" href="#menu30"><span class="fa fa-folder-open"></span> Files</a></li>   
+                    <li class="pull-right">
+                        <img src="content/images/icons/loading2.gif" id="imgLoading" width="32" height="32" >
+                    </li>                            
+                </ul>
+
+                <div class="tab-content">
+
+                    <!-- LIBRARY -->
+
+                    <div id="menu10" class="tab-pane fade in active">
+                       
+                        <div class="row ">
+                            <div class="col-sm-3">
+
+                                <div class="panel panel-default" >
+                                    <div class="panel-heading">dashR Library Included Contexts</div>
+                                    <div class="panel-body" style="padding:0px;margin:0px;">
+                                        <table class="table table-bordered" style="padding:0px;margin:0px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('empty')">dashR()</a> Empty Context</td>
+                                                </tr>                                
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('app')">app</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('system')">system</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('json')">json</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('file')">file</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('folder')">folder</a> Context</td>
+                                                </tr>                                                                        
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('string')">string</a> Context</td>
+                                                </tr>                                                                        
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('path')">path</a> Context</td>
+                                                </tr>                                                                        
+                                            </tbody>
+                                        
+                                        </table>                          
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default" >
+                                    <div class="panel-heading">dashR Library Objects</div>
+                                    <div class="panel-body" style="padding:0px;margin:0px;">
+                                        <table class="table table-bordered" style="padding:0px;margin:0px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('appObject')">App</a> Object</td>
+                                                </tr>                                
+                                            </tbody>
+                                        
+                                        </table>                          
+                                    </div>
+                                </div>    
+                                
+                                <div class="panel panel-default" >
+                                    <div class="panel-heading">dashR Context Enums</div>
+                                    <div class="panel-body" style="padding:0px;margin:0px;">
+                                        <table class="table table-bordered" style="padding:0px;margin:0px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="#" v-on:click="fncLink('enums')">Enums</a> in DashR</td>
+                                                </tr>                                
+                                            </tbody>
+                                        
+                                        </table>                          
+                                    </div>
+                                </div>                                    
+
+                            </div>
+                            <div class="col-sm-9">
+
+                                <div class="" style="width:100%;height:820px;overflow-y:auto">
+                            
+                                    <div class="panel panel-default" >
+                                        <div class="panel-heading">
+                                            <i v-if="((app.ui.showing == 'Home') && (onTab == 'tab1'))" class="fa fa-home"></i> 
+                                            <i v-if="((app.ui.showing != 'Home') && (onTab == 'tab1')) " class="fa fa-arrow-left" v-on:click="fncLink('home')" style="cursor: pointer;"></i>
+                                            Library Documentation <B>{{ '| ' + app.ui.showing }}</b></div>
+                                        <div class="panel-body">
+
+                                            <div id="home" name="Home" class="dashR-html" src="content/html/home.html"></div>
+
+
+                                            <div id="empty" name="The empty Context" class="dashR-html" src="content/html/context_empty.html" style="display:none;visibility:hidden"></div>
+
+                                            <div id="app" name="The app Context" class="dashR-html" src="content/html/context_app.html" style="display:none;visibility:hidden"></div>
+                                            <div id="system" name="The system Context" class="dashR-html" src="content/html/context_system.html" style="display:none;visibility:hidden"></div>
+                                            <div id="json" name="The json Context" class="dashR-html" src="content/html/context_file-json.html" style="display:none;visibility:hidden"></div>
+
+                                            <div id="file" name="The file Context" class="dashR-html" src="content/html/context_file.html" style="display:none;visibility:hidden"></div>
+                                            <div id="folder" name="The folder Context" class="dashR-html" src="content/html/context_folder.html" style="display:none;visibility:hidden"></div>
+
+                                            <div id="string" name="The string Context" class="dashR-html" src="content/html/context_string.html" style="display:none;visibility:hidden"></div>
+                                            <div id="path" name="The path Context" class="dashR-html" src="content/html/context_path.html" style="display:none;visibility:hidden"></div>
+
+
+
+                                            <div id="appObject" name="The App Object" class="dashR-html" src="content/html/app_object.html" style="display:none;visibility:hidden"></div>
+                                            <div id="pageObject" name="The Page Object" class="dashR-html" src="content/html/page_object.html" style="display:none;visibility:hidden"></div>
+
+                                            <div id="enums" name="Enums" class="dashR-html" src="content/html/enums.html" style="display:none;visibility:hidden"></div>
+
+                                        </div>
+                                    </div>                            
+                                </div>    
+
+                            </div>
+                        </div>                        
+
+                    </div>
+
+                    <!-- More CONTEXTS -->
+
+                    <div id="menu20" class="tab-pane fade in ">
+                        
+                        <div class="row">
+                            <div class="col-sm-3">
+
+
+                                <div class="panel panel-default" >
+                                    <div class="panel-heading">dashR Extension Contexts</div>
+                                    <div class="panel-body" style="padding:0px;margin:0px;">
+                                        <table class="table table-bordered" style="padding:0px;margin:0px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_array')">array</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_date')">date</a> Context</td>
+                                                </tr>                                
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_time')">time</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_ps_email')">email</a> Context</td>
+                                                </tr>                                                                                
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_field')">field</a> Context</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_hta')">hta</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_list')">list</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_math')">math</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_object')">object</a> Context</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_unique')">unique</a> Context</td>
+                                                </tr>                                                     
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_xml')">xml</a> Context</td>
+                                                </tr>                                                     
+                                                
+                                            </tbody>
+                                        
+                                        </table>                          
+                                    </div>
+                                </div>                                
+
+                            </div>
+                            <div class="col-sm-9">
+
+                                <div class="" style="width:100%;height:820px;overflow-y:auto">
+
+
+                                    <div class="panel panel-default" >
+                                        <div class="panel-heading">
+                                            <i v-if="((app.ui.id == 'ext_home') && (onTab == 'tab2'))" class="fa fa-home"></i> 
+                                            <i v-if="((app.ui.id != 'ext_home') && (onTab == 'tab2'))" class="fa fa-arrow-left" v-on:click="fncLink('ext_home')" style="cursor: pointer;"></i>
+                                            Extension Documentation <B>{{ '| ' + app.ui.showing }}</b></div>
+                                        <div class="panel-body">
+
+                                            <div id="ext_home" name="Home" class="dashR-html" src="content/html/ext_home.html"></div>
+
+                                            <div id="ext_array" name="Array" class="dashR-html" src="content/html/ext_array.html"></div>
+
+                                            <div id="ext_date" name="Date Time" class="dashR-html" src="content/html/ext_date.html"></div>
+                                            <div id="ext_time" name="Date Time" class="dashR-html" src="content/html/ext_time.html"></div>
+
+                                            <div id="ext_ps_email" name="Email" class="dashR-html" src="content/html/ext_ps_email.html"></div>
+                                            <div id="ext_field" name="Field" class="dashR-html" src="content/html/ext_field.html"></div>
+
+                                            <div id="ext_hta" name="HTA" class="dashR-html" src="content/html/ext_hta.html"></div>
+                                            <div id="ext_list" name="List" class="dashR-html" src="content/html/ext_list.html"></div>
+                                            <div id="ext_math" name="Math" class="dashR-html" src="content/html/ext_math.html"></div>
+                                            <div id="ext_object" name="Object" class="dashR-html" src="content/html/ext_object.html"></div>
+                                            
+                                            <div id="ext_unique" name="Unique" class="dashR-html" src="content/html/ext_unique.html"></div>
+                                            <div id="ext_xml" name="XML" class="dashR-html" src="content/html/ext_xml.html"></div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- CONTEXT EXTENSIONS -->
+
+                    <div id="menu50" class="tab-pane fade in ">
+
+                        <div class="row">
+                            <div class="col-sm-3">
+
+
+                                <div class="panel panel-default" >
+                                    <div class="panel-heading">dashR Context Extensions</div>
+                                    <div class="panel-body" style="padding:0px;margin:0px;">
+                                        <table class="table table-bordered" style="padding:0px;margin:0px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_file')">file</a> Extension</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td>The <a href="#" v-on:click="fncLink('ext_string')">string</a> Extension</td>
+                                                </tr>
+                                            </tbody>
+                                        
+                                        </table>                          
+                                    </div>
+                                </div>                                
+
+                            </div>
+                            <div class="col-sm-9">
+
+                                <div class="" style="width:100%;height:820px;overflow-y:auto">
+
+
+                                    <div class="panel panel-default" >
+                                        <div class="panel-heading">
+                                            <i v-if="((app.ui.id == 'ext_home') && (onTab == 'tab2'))" class="fa fa-home"></i> 
+                                            <i v-if="((app.ui.id != 'ext_home') && (onTab == 'tab2'))" class="fa fa-arrow-left" v-on:click="fncLink('ext_home')" style="cursor: pointer;"></i>
+                                            Extension Documentation <B>{{ '| ' + app.ui.showing }}</b></div>
+                                        <div class="panel-body">
+
+                                            <div id="ext_home" name="Home" class="dashR-html" src="content/html/ext_home.html"></div>
+
+                                            <div id="ext_file" name="File Extension" class="dashR-html" src="content/html/ext_file.html"></div>
+                                            <div id="ext_field" name="Field" class="dashR-html" src="content/html/ext_field.html"></div>
+
+                                            
+                                            <div id="ext_string" name="String Extension" class="dashR-html" src="content/html/ext_string.html"></div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                        </div>                        
+
+                    </div>
+
+                    <!-- FILES -->
+
+                    <div id="menu30" class="tab-pane fade in ">
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="" style="width:100%;height:820px;overflow-y:auto">
+
+                                    <div id="files" name="files" class="dashR-html" src="content/html/files.html"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>                 
+                    
+                    <!-- ELEMENTS -->                    
+
+                    <div id="menu40" class="tab-pane fade in ">
+
+                        <div class="row">
+                            <div class="col-sm-3">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"><i class="fa fa-home"></i> dashR Element Samples </div>
+                                    <div class="panel-body" style="padding:0px;margin:0px;">
+
+                                        <table class="table table-bordered" style="padding:0px;margin:0px;">
+                                            <tr>
+                                                <td width="1%"><i class="fa fa-folder"></i></td>
+                                                <td> <a href="#" v-on:click="fncOpen(dashR('path').relative(app.folder, '..\\Dev\\elements\\icon-selector'))" > Icon-Selector</a></td>
+                                            </tr>                                            
+                                            <tr>
+                                                <td width="1%"><i class="fa fa-code"></i></td>
+                                                <td> <a href="#" v-on:click="openCode" > Icon-Selector.js</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="1%"><i class="fa fa-cogs"></i></td>
+                                                <td> <a href="#" v-on:click="openHTA1" > IconSelector.hta</a></td>
+                                            </tr>                                            
+                                            <tr>
+                                                <td width="1%"><i class="fa fa-folder"></i></td>
+                                                <td> <a href="#" v-on:click="fncOpen(dashR('path').relative(app.folder, '..\\Dev\\elements\\file-selector'))" > File-selector</a></td>
+                                            </tr>                                                  
+                                            <tr>
+                                                <td width="1%"><i class="fa fa-code"></i></td>
+                                                <td> <a href="#" v-on:click="openCode2" > File-selector.js</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="1%"><i class="fa fa-cogs"></i></td>
+                                                <td> <a href="#" v-on:click="openHTA2" > Basic.hta</a></td>
+                                            </tr>                                                  
+                                        </table>
+
+                                        
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-9">
+
+                                <div class="" style="width:100%;height:820px;overflow-y:auto">
+
+                                    <div id="elements" name="elements" class="dashR-html" src="content/html/elements.html"></div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <footer style="padding-top:8px;">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <i class="fa fa-wrench"></i> Built with <b>dashR</b> v{{ versionNo }}
+                </div>
+                <div class="col-sm-6" align="right">
+                    <i class="fa fa-font-awesome"></i> Using <a href="#" v-on:click="fncURL('https://fontawesome.com/v4/cheatsheet/')"><b>Font-Awesome</b></a> Icons v4.7
+                </div>
+            </div>
+           
+        </footer>
+   
+    </div>
+
+
+
+<script language="javascript">
+
+    var dashRApp = new dashR().newApp();
+    
+    dashRApp.load(function() {
+       $("#imgLoading").hide();
+    });
+    
+    var pageApp = new Vue({
+        el: "#App",
+        data: {
+            app: dashRApp,
+            datalocation: "",
+            versionNo: dashR().versionInfo().number(),
+            appName: "",
+            onTab: "tab1",
+            vsCode: "C:\\Users\\ezegl\\AppData\\Local\\Programs\\Microsoft VS Code\\code.exe",
+            msHTA: "C:\\windows\\system32\\msHTA.exe",
+            rootFolder: "",
+        },
+        methods: {
+            init: function () {
+
+                //console.log(this.app.folder);
+                this.appName = this.app.shared("appName");
+                this.rootFolder = (dashR("folder").parent(dashR("folder").parent(this.app.folder)));
+                
+                //console.log(this.app.folder);
+
+                // var path1 = "c:\\ed\\";
+                // var path2 = "\\fred";
+                // var path3 = "ted\/";
+
+                // var tt = dashR("path").combine([path1, path2, path3]);
+                // console.log("path=" + tt);
+
+                //alert(dashR('path').relative(this.app.folder, '..\\Dev\\elements\\file-selector'));
+                
+            },
+            btnHere: function () {
+                alert("here");
+            },
+            btnTesting: function () {
+
+                
+
+                var dateMod = dashR("date");
+
+                console.log( dateMod.part.value( new Date() ));
+                console.log( dateMod.part.compare( new Date(), new Date(1900, 1, 1), dateMod.cmpDirection.forward ));
+
+                //jDash("file").save(this.page.data_folder + "\\test.txt", "This is and was a test");
+                //jDash("system").open(this.page.data_folder + "\\test.txt");
+            },
+            fncURL: function (url) {
+                dashR("system").open(url);
+            },
+            btn1: function () {
+                alert("btn1");
+            },
+            btnNewApp: function () {
+                var element = this;
+
+                var appName = window.prompt("Enter a name for the new application.", "keep it simple");
+                if (appName) {
+
+                    // create the folder in Apps.
+
+                    var newFolder = element.rootFolder + "\\Apps\\" + appName;
+                    var basFolder = element.rootFolder + "\\Apps\\Empty";
+                    var basFile = element.rootFolder + "\\Apps\\" + appName + "\\Empty.hta";
+                    var newFile = appName + ".hta";
+
+                    if (dashR("folder").exists(newFolder)) {
+                        alert("Folder / Application of " + appName + " already exists!");
+                    } else {
+
+                        dashR("folder").create(newFolder);                        
+                        dashR("folder").copy_to(newFolder, basFolder)
+                        dashR("file").rename(basFile, newFile);
+                        dashR("system").cmd(element.vsCode, newFolder);
+
+                    }
+                }
+
+            },
+            fncTab: function (id) {
+                this.onTab = id;
+                switch(this.onTab) {
+                    case "tab1": {
+                        this.fncLink("home");
+                        break;
+                    }                        
+                    case "tab2": {
+                        this.fncLink("ext_home")
+                        break;
+                    }
+                    case "tab3": {
+                        this.fncLink("files")
+                        break;
+                    }                             
+                    case "tab4": {
+                        this.fncLink("elements")
+                        break;
+                    }                         
+                    case "tab5": {
+                        this.fncLink("ext_file")
+                        break;
+                    }                         
+
+                }
+            },
+            fncOpenFile: function (path) {
+                //console.log(this.rootFolder + "\\Library\\Dev\\" + path);
+                dashR("system").open(this.rootFolder + "\\Library\\Dev\\" + path);
+            },
+            openCode: function () {
+                dashR("system").cmd (this.vsCode, this.rootFolder + "\\Library\\Dev\\elements\\icon-selector\\context_icons.js");
+            },
+            openHTA1: function () {
+                dashR("system").cmd (this.msHTA, this.rootFolder + "\\Apps\\IconSelector\\IconSelector.hta");
+            },
+            openCode2: function () {
+                dashR("system").cmd (this.vsCode, this.rootFolder + "\\Library\\Dev\\elements\\file-select\\file-selector.js");
+            },
+            openHTA2: function () {
+                dashR("system").cmd (this.msHTA, this.rootFolder + "\\Apps\\Basic\\Basic.hta");
+            },            
+            fncLink: function (id) {
+                this.app.ui.show(id);
+            },
+            fncOpen: function (url) {
+                dashR("system").open(url);
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        htaConsole.toggle();
+
+        // adding (and calling) my own function to the std jDash "app" context
+        // jDash("app")["ed"] = function (text) { alert(text); };
+        // jDash("app").ed("Hello World");        
+
+        pageApp.init();        
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            //var target = $(e.target).attr("href") // activated tab
+            //var targetId = $(e.target).attr("id") // activated tab
+            pageApp.fncTab( $(e.target).attr("id") );
+        });
+        
+    });
+    
+</script>
+
+</body> 
+</html> 

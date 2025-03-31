@@ -1,0 +1,54 @@
+
+<span class="heading-md">The "system" Context</span>
+<hr />
+
+<p class="text-page">
+    The "system" Context of dashR is included for performing OS related tasks like spawning another application.
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>system</b>")</span>.<span class="method">cmd</span> (<span class="param">fileSpec</span>, <span class="param">cmdargs</span>, <span class="param">windowstyle</span>[optional], <span class="param">waitonreturn</span>[optional]);
+            <ul>
+                <li>The <b>fileSpec</b> of the file to open using the command window</li>
+                <li>Any command line paramters</li>
+            </ul>
+
+    </div>
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>system</b>")</span>.<span class="method">open</span> (<span class="param">urlOrFileSpec</span>);
+            <ul>
+                <li>The <b>urlOrFileSpec</b> to spawn using the operating systems default for the type</li>
+            </ul>
+
+    </div>    
+        
+
+</p>
+
+<span class="heading-sm">Usage Examples</span>
+<hr />
+
+<pre class="language-javascript">
+
+// perform command line operations
+var vsCode = "c:\\programfiles\vscode.exe";
+dashR("system").cmd (vsCode, "c:\\user\\text.json");
+
+// spawn open other applications
+dashR("system").open ("c:\\user\\text.txt");        // spawn Notepad
+dashR("system").open ("c:\\user\\word.doc");        // spawn Word
+dashR("system").open ("https://www.google.com");    // spawn the default Browser </pre>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

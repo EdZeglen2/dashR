@@ -1,0 +1,81 @@
+
+<span class="heading-md">The "time" Context</span>
+<hr />
+
+<p class="text-page">
+    The "time" Context of dashR is an extension Context that you may optionally include for handling time related functions.
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>time</b>")</span>.<span class="method">format</span> (<span class="param">text</span>, <span class="param">format</span>);
+            <ul>
+                <li>The parameter <b>text</b> is the text to make a time from.</li>
+                <li>The parameter <b>format</b> is how to format the time returned.</li>
+                <li>formats include:
+                    <div style="padding-left:16px;">
+                        <b>"hh:mm ampm"</b><br>
+                    </div>
+                    
+                </li>
+            </ul>
+
+        <span class="heading-sm">Example use of .format</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+        var today = new Date();
+        console.log(dashR("time").format(today, "hh:mm ampm"));
+        \\ returns: 08:09 AM</pre>            
+
+    </div>
+            
+    <hr />
+
+        <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>time</b>")</span>.<span class="method">parse</span> (<span class="param">timeString</span>);
+            <ul>
+                <li>???</li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .parse</span>
+        <hr />
+
+<pre class="language-javascript">
+</pre>            
+
+    </div>
+
+    <hr />
+
+        <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>time</b>")</span>.<span class="method">diff</span> (<span class="param">start</span>, <span class="param">end</span>);
+            <ul>
+                <li>???</li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .diff</span>
+        <hr />
+
+<pre class="language-javascript">
+</pre>            
+
+    </div>    
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

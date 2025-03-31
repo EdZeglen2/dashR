@@ -1,0 +1,169 @@
+
+<span class="heading-md">The empty() Context</span>
+<hr />
+
+<p class="text-page">
+    The empty() Context of dashR is used for retrieving dashR's intenral objects. The format is dashR().[property or method name]
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR()</span>.<span class="method">versionInfo()</span>;
+            <ul>
+                <li>Returns an object with the following properties:
+                    <div style="padding-left:16px;">
+                        .name<br>
+                        .date<br>
+                        .major<br>
+                        .minor<br>
+                        .patch<br>                 
+                    </div>
+                </li>                
+                <li>Returns an object with the following methods:
+                    <div style="padding-left:16px;">
+                        .number()<br>
+                    </div>
+                </li>                        
+            </ul>
+
+    </div>
+
+    <span class="heading-sm">Example use of .versionInfo</span>
+
+    <pre class="language-javascript">
+    var myApp = {
+        number: dashR().versionInfo().number();     // dashRs Major.Minor.Patch string (1.0.0)
+        ...
+    }    
+    </pre>    
+
+    <hr />
+
+    <div style="padding:10px;">
+        <span class="dashr">dashR()</span>.<span class="method">addContext</span> (<span class="param">newContext</span>);
+            <ul>
+                <li>The <b>newContext</b> is an object with a <b>name</b> and <b>js</b> { "name": name, "js": js } property.                
+            </ul>
+    </div>    
+
+    <span class="heading-sm">Example use of .addContext</span>
+
+    <pre class="language-javascript">
+    // add a "crypto" context to dashR
+    dashR().addContext({
+        name: "crypto",
+        js: {
+            keyLength: 128,
+            encrypt: function (text, key) {
+                return ...
+            },
+            decrypt: function (text, hash) {
+                return ...
+            },
+            generateKey: function (password, salt) {
+                return ...
+            }
+        }
+    });
+
+    // invoke the generateKey method
+    var myKey = dashR("crypto").generateKey("12345", "OctoberWinds");
+        
+    </pre>    
+    
+    <hr />
+
+    <div style="padding:10px;">
+        <span class="dashr">dashR()</span>.<span class="method">newApp </span>(<span class="param">config</span>[optional]);
+            <ul>
+                <li>The optional <b>config</b> parameter is an object of propteries.
+                <li>Creates an AppObject </li>
+                <li>Any elements using the unique tag of <b>&lt;dashR&gt;&lt;/dashR&gt;</b>, will be loaded based on their <b>context</b> and <b>type</b> attributes.</li>
+            </ul>
+    </div>   
+
+    <span class="heading-sm">Example use of .newApp</span> <br>
+
+    <hr>
+
+    <b>HTML</b>
+    <pre class="language-html">
+
+        &lt;div id="dialogs"&gt;&lt;/div&gt;
+
+        &lt;dashR 
+            id="selector1" class="icon-selector" 
+            name="selector1" context="icons" type="selector"
+            &gt; (Loading...) 
+        &lt;/dashR&gt;
+
+    </pre>
+
+    <b>JavaScript</b>
+    <pre class="language-javascript">
+        // Basic usage
+        var myApp = dashR().newApp();
+        myApp.load();
+
+        // Advanced with dashR Dialogs support and dashR Packages
+        var myApp = dashR().newApp({
+            dlgs: {
+                folder: "content\\html",
+                dialogs: [
+                    { name: "dlg-account" },
+                    { name: "dlg-sign-on" },
+                    { name: "dlg-email" }
+                ]
+            },
+            pkgs: {
+                folder: "content\\packages",
+                packages: [
+                    { name: "icon-selector" },
+                    { 
+                        name: "file-selector", 
+                        css: true, 
+                        js: true, 
+                        template: false, 
+                        folder: "content\\junk", 
+                        type: "" 
+                    }
+                ]                
+            }
+        });
+
+        myApp.load();
+
+    </pre>
+
+    <hr />
+
+    <div style="padding:10px;">
+        <span class="dashr">dashR()</span>.<span class="method">.el </span>(<span class="param">elName</span>);
+            <ul>
+                <li>Returns a reference to a dashR element.</li>
+            </ul>
+    </div>         
+
+    <span class="heading-sm">Example use of the &lt;dashR&gt; tags and the .el method</span>
+    <hr />
+
+    <pre class="language-html">
+        &lt;dashR id="myThing1" name="myThing_Name1" context="icons" type="selector"&gt;&lt;/dashR&gt;
+    </pre>           
+
+    <pre class="language-javascript">
+        var selector1 = dashR().el("myThing_Name1");
+        selector1.init();
+        selector1.bind();
+    </pre>      
+    
+</p>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

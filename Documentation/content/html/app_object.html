@@ -1,0 +1,253 @@
+<span class="heading-md">The dashR AppObject</span>
+<hr />
+
+<p class="text-page">
+    The AppObject exists to provide simple yet essentual funtions for most applications. It has the following properties and methods.
+</p>
+
+<span class="heading-sm">Included Properties</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+        .<span class="method">sharedLocation </span>
+            <ul>
+                <li>This is defaulted to the .hta files location with <b>\data</b> added to it.
+                <li>the dashR <b>AppObject</b> assumes this folder exists.</li>
+                <li>Ex. for an .hta file of c:\scripts\mydashRApps\app1.hta <br>
+                    the <b>sharedLocation</b> is c:\scripts\mydashRApps\data
+                </li>
+            </ul>
+    </div>            
+
+    <hr />
+
+    <div style="padding:10px;">
+        .<span class="method">folder </span>
+            <ul>
+                <li>This is defaulted to the .hta files location.
+                <li>Ex. for an .hta file of c:\scripts\mydashRApps\app1.hta <br>
+                    the <b>folder</b> is c:\scripts\mydashRApps
+                </li>
+            </ul>
+    </div>       
+
+    <hr />
+
+    <div style="padding:10px;">
+        .<span class="method">dlg </span>
+            <ul>
+                <li>This is defaulted to false</li>
+                <li>Do not change this to anything else.</li>
+            </ul>
+    </div>          
+
+</div>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+   
+    <div style="padding:10px;">
+        .<span class="method">init </span>(<span class="param">config</span>[optional]);
+            <ul>
+                <li>The optional <b>config</b> parameter is an object of propteries.
+                <li>This is called automatically when the object is created, but it may be called again if <b>config</b> changes </li>
+            </ul>
+    </div>            
+
+    <hr />
+
+    <div style="padding:10px;">
+        .<span class="method">fMap.for</span>(<span class="param">alias</span>[required], <span class="param">fileSpec</span>[optional]);
+            <ul>
+                <li><b>.fMap</b> is an object for saving file specs (paths/fileNames) to reference by <b>alias</b>.</li>
+                <li>The <b>alias</b> is the file specs handle to reference it by</li>
+                <li>The <b>fileSpec</b> is the full path and filename for the file (including the file extension).</li>
+                <li>If only the <b>alias</b> is provided it returns the filespec, if both are porvided it saves it.</li>
+                <li>The App Object containts one of these objects built in with the name <b>fMap</b>. See Below</li>
+            </ul>
+    </div>        
+
+    <hr />
+
+    <div style="padding:10px;">
+        .<span class="method">load</span>(<span class="param">fnDone</span>[optional]);
+            <ul>
+                <li>Any elements styled with the unique class <b>dashR-html</b>, will be loaded based on their <b>src</b> attribute.</li>
+                <li>Any elements styled with the unique class <b>dashR-dialog</b>, will be created based on their <b>src</b> and <b>name</b> attribute.</li>
+                <li>The <b>fnDone</b> parameter is a function to call when loading completes</li>
+                <li>This Documentation App is using this feature of dashR. This page was loaded using this method.</li>
+            </ul>
+    </div>    
+
+    <hr />
+    
+    <div style="padding:10px;">
+        .<span class="method">ui</span>;
+            <ul>
+                <li>The following methods and properties are included:
+                    <div style="padding-left:8px;">
+                        <b>.pages <br>
+                            .id <br>
+                            .showing<br> 
+                            .show(name)</b>
+                    </div>
+                </li>
+            </ul>
+    </div>        
+
+    <hr />
+
+    <div style="padding:10px;">
+        .<span class="method">shared</span>(<span class="param">name</span>[optional], <span class="param">value</span>[optional]);
+            <ul>
+                <li>When no parameters are supplied this returns the JSON <b>shared</b> object from \data\_shared.json.
+                <li>When only the <B>name</b> parameter is supplied this <b>gets</b> the <b>value</b> of the property in the JSON <b>shared</b> object.
+                <li>When both <b>name</b> and <b>value</b> properties are supplied, this <b>sets</b> the value in the JSON <b>shared</b> object.
+            </ul>
+    </div>        
+
+    <hr />
+
+    <div style="padding:10px;">
+        .<span class="method">settings</span>;
+            <ul>
+                <li>The following methods are proved:
+                    <div style="padding-left:8px;">
+                        <b>.data<br>
+                        .folder<br>
+                        .init()<br>
+                        .value(name, value)<br>
+                        .save()<br></b>
+                    </div>
+                </li>
+            </ul>
+    </div>     
+
+    <hr />
+
+    <div style="padding:10px;">
+        .<span class="method">dialog</span>(<span class="param">name</span>);
+            <ul>
+                <li>Returns a mapped <b>dialog</b> object which has the following properties and methods:
+                    <div style="padding-left:8px;">
+                        <b>.visible</b><br>
+                        <b>.show()</b><br>
+                        <b>.hide()</b><br>
+
+                    </div>
+                </li>
+                <li>This is for modal dialogs in applications built with dashR.</li>
+                <li>Any element with the dashR-dialog class is created upone app.load()</li>
+                <li>See the Elements tab for the dashR-html class.</li>
+                <li>The src=html should contain the html for a modal dialog box.</li>
+            </ul>
+
+        <p class="heading-sm">Example use of .dialog </p>
+
+        <hr>
+
+        <b>HTML</b>
+        <pre class="language-html">
+&lt;div 
+    class="dashR-dialog dashR-html" 
+    id="dlg1" name="dlg1" 
+    src="content/html/dlgs/dlg1.html" 
+    v-if=" ( (app.dlg) || (app.dialog('dlg1').visible) ) "&gt; 
+&lt;/div&gt;</pre>            
+
+        <b>Contents of the dlg1.html file</b>
+        <pre class="language-html">
+&lt;div class="modal-mask"&gt;
+    &lt;div class="modal-wrapper"&gt;
+        &lt;div class="modal-dialog modal-lg"&gt;
+            &lt;div class="modal-content"&gt;
+                &lt;div class="modal-header"&gt;
+                    &lt;button 
+                        type="button" class="close"
+                        v-on:click="app.dialog('dlgName').hide()" &gt;
+                        &lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;h4 class="modal-title"&gt;Dialog 1 Title&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;div class="modal-body"&gt;
+
+                    &lt;div class="row"&gt;
+                        &lt;div class="col-sm-12"&gt;
+                            Dialog 1 Example
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                
+                &lt;/div&gt;
+                &lt;div class="modal-footer"&gt;
+                    &lt;button 
+                        class="btn" title="Close" 
+                        v-on:click="app.dialog('dlgName').hide()" &gt;Close&lt;/button&gt;                                
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;            
+        </pre>
+
+        <b>JavaScript</b>
+        <pre class="language-javascript">
+app.dialog("dlg1").show();
+app.dialog("dlg1").hide();</pre>
+    </div>         
+
+    <hr />
+
+    <div style="padding:10px;">
+        .<span class="method">checks</span>(<span class="param">name</span>, <span class="param">master</span>);
+            <ul>
+                <li>The <b>name</b> are the checkbox names.</li>
+                <li>The <b>master</b> is a boolean indicating the master checkbox that flips the state of the others. 
+                    If false the function returns and array of selected (checked) items.</li>
+            </ul>
+    </div>     
+
+<b>HTML</b>
+    <pre class="language-html">
+
+&lt;table class="table table-bordered table-striped"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th style="width:1%;"&gt;
+            &lt;input 
+                type="checkbox" 
+                name="mstr_chk_imports" 
+                v-on:click="app.checks('chk_imports', 'true')"&gt;
+            &lt;/th&gt;
+            
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody &gt;
+        &lt;template v-for="item in accountManager.conflicts"&gt;
+            &lt;tr &gt;
+                &lt;td&gt;
+                    &lt;input type="checkbox" name="chk_imports" v-bind:value="item"&gt;
+                &lt;/td&gt;
+                
+            &lt;/tr&gt;
+        &lt;/template&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;        
+        
+
+    </pre>
+
+
+    <b>JavaScript</b>
+    <pre class="language-javascript">
+
+        var selected = this.app.checks('chk_imports', false);
+
+    </pre>
+
+</p>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>

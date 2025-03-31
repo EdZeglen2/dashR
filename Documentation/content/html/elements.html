@@ -1,0 +1,71 @@
+ <div class="panel panel-default">
+        <div class="panel-heading"><i class="fa fa-home"></i> Library Documentation <b>| Elements</b></div>
+
+        <div class="panel-body">
+            <span class="heading-lg">dashR Elements</span>
+
+            <hr />
+            
+            <p class="text-default">
+                The dashR Library will scan for its own HTML tags in the document on app.load(). If found, it will attempt to locate the <b>Context</b>
+                and create the item <b>type</b> matching the type attribute of the dashR tag. Class and all other attributes 
+                are optional but can style your element. Make sure to include any .css files your element may need in the head of the page.
+            </p>
+
+            <br>
+
+            <span class="heading-md">Requirements for usage</span>
+            <hr />
+
+            <p class="text-page">
+                The dashR library expects all dashR elements to have a unique <b>id</b>, a unique <b>name</b>, a <b>context</b> reference (by name) and a <b>type</b>.
+            </p>       
+            
+            <span class="heading-sm">Example HTML</span>
+
+            <hr />
+
+<pre class="language-html">
+&lt;dashR 
+    id="selector1" class="custom-selector" 
+    name="selector1" context="icons" type="selector"&gt;
+    (Loading...)
+&lt;/dashR&gt;</pre>
+
+            <p class="text-page">
+                Note in the example above we have provided all four of the required attributes to the tag. 
+                In this example dashR will attempt to create the <b>"selector"</b> object inside the <b>"icons"</b> context. Below
+                is the code for adding this context to dashR.
+            </p>
+
+            <span class="heading-sm">Example JavaScript</span>
+            <hr />
+
+<pre class="language-javascript">
+    dashR().addContext({
+        name: "icons",
+        js: {
+            selector: function () {
+                return {
+                    items: [],
+                    selected: null,
+                    index: -1,
+                    init: function () {
+                        ...
+                    },
+                    bind: function () {
+                        ...
+                    }
+                }
+            }
+        }
+    });</pre>
+
+    <p class="text-page">
+            The above example does not reflect a real object and you would have more methods and properties than we have shown.
+        </p>
+
+        <div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+
+    </div>
+</div>                                    

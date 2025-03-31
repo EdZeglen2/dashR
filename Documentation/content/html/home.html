@@ -1,0 +1,39 @@
+<span class="heading-lg">dashR</span>
+<hr />
+
+<p class="text-default">
+
+    dashR is an open-source, MIT licensed, JavaScript library intended for rapid application development (RAD) with Microsoft .HTA's using pure JavaScript, 
+    jQuery and Vue. This library was created to be light-weight and to be easily and quickly included into a pur JavaScript application.
+
+</p>
+
+<br>
+
+<span class="heading-md">Understanding Context : dashR("context")</span>
+<hr />
+
+<p class="text-page">
+    The dashR library uses the idea of a container made up of various, application related Contexts. A context is merely an object that contains 
+    properties and methods. The basic dashR library has the essential functions in its default Contexts for building applications. 
+    Things like basic file and folder access, string manipulation, and system commands are in the default library contexts.
+    
+</p>
+
+
+<p class="text-page">
+    Below are some examples.
+</p>
+
+<pre class="language-javascript" >
+// Calling the Load method of the File Context                            
+var text = dashR("file").load("c:\\myfile.text"); 
+
+// Calling the Load method of the JSON Context
+var items = dashR("json").load("c:\\myfile.json", {}); </pre>
+
+                      
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>

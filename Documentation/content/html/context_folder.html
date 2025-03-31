@@ -1,0 +1,220 @@
+
+<span class="heading-md">The "folder" Context</span>
+<hr />
+
+<p class="text-page">
+    The "folder" Context of dashR is included for handling basic folder operations. brwose, create, remame, copy, delete, etc...
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">fso</span>;
+            <ul>
+                <li>.fso returns a <b>Windows Scripting File System Object</b></li>
+            </ul>
+
+    </div>    
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">exists</span> (<span class="param">folderSpec</span>);
+            <ul>
+                <li>The <b>folderSpec</b> to test for exists on the computer.</li>
+            </ul>
+
+    </div>
+
+    <hr />    
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">get</span> (<span class="param">folderSpec</span>);
+            <ul>
+                <li>The <b>folderSpec</b> is the folder to load on the computer .</li>
+                <li>The <b>Windows Folder Object</b> properties include:
+                    <div style="padding-left:16px;">
+                        .Name<br>
+                        .Size<br>
+                        .Type<br>                 
+                    </div>
+                </li>
+            </ul>
+
+    </div>    
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">parent</span> (<span class="param">folderSpec</span>);
+            <ul>
+                <li>This returns just the folders <b>parent</b> folderSpec.
+                <li>The <b>folderSpec</b> is the path to the folder to want the parent of.</li>                
+            </ul>
+
+    </div>  
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">sub_folders</span> (<span class="param">folderSpec</span>, <span class="param">into</span>[optional], <span class="param">separator</span>[optional]);
+            <ul>
+                <li>This returns just the <b>folders</b> in the folder (no files).</li>
+                <li>The <b>folderSpec</b> is the path to the folder.</li>
+                <li>The <b>into</b> parameter is an array to fill with folder objects.</li>
+                <li>file object properties inculde
+                    <div style="padding-left:16px;">
+                        .name<br>
+                        .spec<br>
+                    </div>
+                </li>
+            </ul>
+
+    </div>      
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">files</span> (<span class="param">folderSpec</span>, <span class="param">into</span>);
+            <ul>
+                <li>This returns just the <b>files</b> in the folder (no folders).</li>
+                <li>The <b>folderSpec</b> is the path to the folder.</li>
+                <li>The <b>into</b> parameter is an array to fill with file objects.</li>
+                <li>file object properties inculde
+                    <div style="padding-left:16px;">
+                        .name<br>
+                        .spec<br>
+                        .size<br>                 
+                        .ext<br>                 
+                        .mDate<br>                 
+                    </div>
+                </li>
+            </ul>
+
+    </div>  
+    
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">traverse</span> (<span class="param">path</span>, <span class="param">into</span>);
+            <ul>
+                <li>This populates an array with all the folder and file information in the tree including subfolders</li>
+                <li>The <b>path</b> is the path to the folder to start with to.</li>
+                <li>The parameter <b>into</b> is an array to put the data.</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+    
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">create</span> (<span class="param">folderSpec</span>);
+            <ul>
+                <li>The <b>folderSpec</b> is the path to the folder to create.</li>
+                <li>This will fail if the folder already exists, see <span class="method">.make</span> below or use <span class="method">.exists</span> above, first to check before calling</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">make</span> (<span class="param">folderSpec</span>);
+            <ul>
+                <li>This will create a folder, but only if the folder does not exist.</li>
+                <li>The parameter <b>folderSpec</b> is the folder to make sure it exists.</li>
+                
+            </ul>
+
+    </div>  
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">delete</span> (<span class="param">folderSpec</span>);
+            <ul>
+                <li>The parameter <b>folderSpec</b> is the folder to delete.</li>
+            </ul>
+
+    </div>  
+    
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">copy</span> (<span class="param">source</span>, <span class="param">destination</span>, <span class="param">overwrite</span>);
+            <ul>
+                <li>The parameter <b>source</b> is the folder to be copied.</li>
+                <li>The parameter <b>destination</b> is the folder to copy <b>source</b> to.</li>
+                <li>The parameter <b>overwrite</b> specifies to overwrite the folder and everything in it. <br> If unspecified, assumes true.</li>
+            </ul>
+
+    </div>  
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">copy_to</span> (<span class="param">targetFolder</span>, <span class="param">sourceSpec</span>);
+            <ul>
+                <li>This function shows the Windows move dialog window with a progress bar.</li>
+                <li>The parameter <b>source</b> is the folder to have its contents copied.</li>
+                <li>The parameter <b>destination</b> is the folder to copy <b>source</b> items to.</li>
+            </ul>
+
+    </div>      
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">move_to</span> (<span class="param">toMove</span>, <span class="param">moveTo</span>);
+            <ul>
+                <li>This function shows the Windows move dialog window with a progress bar.</li>
+                <li>The parameter <b>toMove</b> is a file to move.</li>
+                <li>The parameter <b>toMove</b> may be a folder to move (? never tried it).</li>
+                <li>The parameter <b>moveTo</b> is the folder to move <b>toMove</b> to.</li>
+            </ul>
+
+    </div>      
+
+    <hr />    
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>folder</b>")</span>.<span class="method">browse</span> (<span class="param">startinfolder</span>, <span class="param">dialogtitle</span>);
+            <ul>
+                <li>Brings up the windows select a folder dialog box.</li>
+                <li>If the user cancels the dialog <b>null</b> is returned. Check for this.</li>
+                <li>The parameter <b>startinfolder</b> is folder to start the dialog in.</li>
+                <li>The parameter <b>dialogtitle</b> is the dialogs title bar message.</li>
+            </ul>
+
+    </div>  
+
+
+</p>
+
+<span class="heading-sm">Usage Examples</span>
+<hr />
+
+<pre class="language-javascript">
+
+</pre>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

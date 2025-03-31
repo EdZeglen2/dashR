@@ -1,0 +1,100 @@
+
+<span class="heading-md">The "list" Context</span>
+<hr />
+
+<p class="text-page">
+    The "list" Context of dashR is an extension Context that you may optionally include for handling list related functions. 
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>list</b>")</span>.<span class="method">collection</span> ();
+            <ul>
+                <li>This returns a simulated JavaScript collection (using an Object) </li>
+                <li>Properties of the collection are:
+                    <div style="padding-left:8px;">
+                        <b>.keys</b><br>
+                    </div>
+                </li>
+                <li>Methods of the collection are:
+                    <div style="padding-left:8px;">
+                        <b>.item (key)</b><br>
+                        <b>.add (key, value)</b><br>
+                        <b>.remove (key)</b><br>
+                        <b>.clear ()</b><br>
+                        <b>.exists (key)</b><br>
+                        <b>.length ()</b><br>
+                    </div>
+                </li>                
+            </ul>
+
+        <span class="heading-sm">Example use of .collection</span>
+        <hr />
+
+        <pre class="language-javascript">
+            var coll2 = new dashR("list").collection();
+
+            coll2.add ("ed", "value1");
+            coll2.add ("jed", "value2");
+            coll2.add ("fred", "value3");
+
+            // NOTE: this is a function and requires ();
+            console.log(coll2.length());    
+
+            if (coll2.exists("jed")) {
+                //returns: value2
+                console.log(coll2.item("jed").value) 
+            }
+
+            coll2.clear();</pre>            
+
+    </div>
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>list</b>")</span>.<span class="method">dictionary</span> ();
+            <ul>
+                <li>This returns a Windows Scripting.Dictionary Object</li>
+                <li>Official Microsoft Document: <a href="#" v-on:click="fncOpen('https://learn.microsoft.com/en-us/office/vba/language/reference/user-interface-help/dictionary-object')">Dictionary Object</a></li>
+                <li>Properties of the collection are:
+                    <div style="padding-left:8px;">
+                        <b>.Keys</b><br>
+                        <b>.Count</b><br>
+                        <b>.Item</b><br>
+                        <b>.CompareMode</b><br>
+                    </div>
+                </li>
+                <li>Methods of the collection are:
+                    <div style="padding-left:8px;">
+                        <b>.Item (key)</b><br>
+                        <b>.Add (key, value)</b><br>
+                        <b>.Remove (key)</b><br>
+                        <b>.RemoveAll ()</b><br>
+                        <b>.Exists (key)</b><br>
+                    </div>
+                </li>                
+            </ul>
+
+        <span class="heading-sm">Example use of .dictionary</span>
+        <hr />
+
+        <pre class="language-javascript">
+           // I HAVE NEVER TESTED THIS
+        </pre>            
+
+    </div>    
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

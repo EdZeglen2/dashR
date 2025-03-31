@@ -1,0 +1,73 @@
+
+<span class="heading-md">The "unique" Context</span>
+<hr />
+
+<p class="text-page">
+    The "unique" Context of dashR is an extension Context that you may optionally include for generating unique IDs. 
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>unique</b>")</span>.<span class="method">GUID</span> (<span class="param">brackets</span>[optional=true]);
+            <ul>
+                <li>The parameter <b>brackets</b> is a boolean value indicating if the function returns the GUID with {} or not.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .format</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+        var id3 = dashR("unique").GUID();
+        alert(id3);
+
+        var id4 = dashR("unique").GUID(false);
+        alert(id4);</pre>            
+
+    </div>
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>unique</b>")</span>.<span class="method">from</span>
+            <ul>
+                <li>The following functions return unique values.
+                    <div style="padding-left:8px;">
+                        <b>.math()</br>
+                        .now()</br>
+                        .time()</br>
+                        .text(text)</b></br>
+                    </div>
+                </li>
+            </ul>
+
+        <span class="heading-sm">Example use of .from</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+        var id1 = dashR("unique").from.math();
+        var id2 = dashR("unique").from.now();
+        var id3 = dashR("unique").from.time();
+        var id4 = dashR("unique").from.text("This is some text");
+        
+        console.log(id1);
+        console.log(id2);
+        console.log(id3);
+        console.log(id4);
+
+        </pre>            
+
+    </div>    
+
+</p>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

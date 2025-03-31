@@ -1,0 +1,102 @@
+
+<span class="heading-md">The "string" Context</span>
+<hr />
+
+<p class="text-page">
+    The "string" Context of dashR is included for handling basic string functions.
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:8px;">
+
+        <span class="dashr">dashR("<b>string</b>")</span>.<span class="method">pad</span> (<span class="param">text</span>, <span class="param">char</span>, <span class="param">length</span>, <span class="param">direction</span>[optional]);
+            <ul>
+                <li>The <b>text</b> to be padded</li>
+                <li>The <b>char</b> to use for padding</li>
+                <li>The <b>length</b> pads the text with char until this length</li>
+                <li>The (optional) <b>direction</b> to pad, if not supplied it assumes "left" padding</li>
+            </ul>
+
+    </div>
+
+    <hr />
+            
+    <div style="padding:8px;">
+
+        <span class="dashr">dashR("<b>string</b>")</span>.<span class="method">left</span> (<span class="param">str</span>, <span class="param">n</span>);
+            <ul>
+                <li>The <b>str</b> is the text to be read</li>
+                <li>The <b>n</b> is how many characters to read</li>
+                <li style="color:red;"><i>[Included for Legacy]</i></li>
+            </ul>
+
+    </div>
+
+    <hr />
+
+    <div style="padding:8px;">
+
+        <span class="dashr">dashR("<b>string</b>")</span>.<span class="method">right</span> (<span class="param">str</span>, <span class="param">n</span>);
+            <ul>
+                <li>The <b>str</b> is the text to be read</li>
+                <li>The <b>n</b> is how many characters to read</li>
+                <li style="color:red;"><i>[Included for Legacy]</i></li>
+            </ul>
+
+    </div>    
+
+    <hr />
+
+    <div style="padding:8px;">
+
+        <span class="dashr">dashR("<b>string</b>")</span>.<span class="method">proper_case</span> (<span class="param">text</span>);
+            <ul>
+                <li>The <b>text</b> is the text to fix</li>
+                <li style="color:red"><i>[This is NOT fool-proof and can fail with some text]</i></li>
+            </ul>
+
+    </div>        
+
+</p>
+
+<span class="heading-sm">Usage Examples</span>
+<hr />
+
+<pre class="language-javascript">
+
+    // .pad =================================================
+
+    //format date.
+    var today = new Date();
+    var month = today.getMonth()-1;
+    var day = today.getDate();
+    var year = today.getFullYear();
+
+    var formatted = dashR("string").pad(month, "0", 2) 
+        + "-" + dashR("string").pad(day, "0", 2) 
+        + "-" + year;
+
+    console.log(formatted);
+    // should return MM-DD-YYYY
+
+    // .left ================================================
+    var month = dashR("string").left("10-10-2024", 2);
+    // month = 10
+
+    // .right ================================================
+    var year = dashR("string").right("10-10-2024", 4);
+    // year = 2024
+
+    // .proper_case ==========================================
+    var title = dashR("string").proper_case("THIS IS A TITLE");
+    // title = This is a Title;
+
+</pre>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

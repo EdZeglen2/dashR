@@ -1,0 +1,104 @@
+<span class="heading-lg">dashR</span>
+<hr />
+
+<p class="text-default">
+
+    dashR's default Contexts contains most of the functions you might need to built applications at a fast pace. 
+    
+    However, some things are not used often and were therefore placed in Extension Contexts. 
+    
+    These are provided for you to include only if needed, or to extend with your own functions.
+    
+    Optionally you may wish to Create an etirely new Context of you own.
+
+</p>
+
+<br>
+
+<span class="heading-md">Ways to Extend the Library</span>
+
+<hr />
+
+<p class="text-page">
+    You can extend the dashR library with your own <b>Contexts</b>, <b>Modules</b> and <b>Functions</b>.
+</p>                        
+
+<hr>
+
+<p class="text-page">
+    Below is an example of adding a <b>Context</b> to dashR.
+</p>                        
+
+<pre class="language-javascript">
+
+// add a "crypto" context to dashR
+dashR().addContext({
+    name: "crypto",
+    js: {
+        keyLength: 128,
+        encrypt: function (text, key) {
+            return ...
+        },
+        decrypt: function (text, hash) {
+            return ...
+        },
+        generateKey: function (password, salt) {
+            return ...
+        }
+    }
+});
+
+// invoke the generateKey method
+var myKey = dashR("crypto").generateKey("12345", "OctoberWinds");</pre>
+
+<hr>
+
+<p class="text-page">
+    Below is an example of adding a <b>Module</b> to the dashR "app" Context.
+</p>
+
+<pre class="language-javascript ">
+
+// add a new Module called "media" to the "app" Context of dashR
+dashR("app")["media"] = {
+    archiver: function () {
+        return {
+            data: [ { name: "ed "} ],
+            init: function () {
+                this.data.push({ name: "roger" });
+            },
+            doSomething: function () {
+                this.data[0].name = "fred";
+                console.log(JSON.stringify(this.data));
+            }
+        }
+    },
+    function1: function (text) {
+        console.log(text);
+    }
+}             
+
+// create a new instance of the archiver from the "media" Module in the "app" Context
+// note the practice of using this pattern: dashr("context").moduleName.object()
+var archiver = new dashR("app").media.archiver();   
+
+// call the init function
+archiver.init();</pre>
+
+<hr>
+
+<p class="text-page">
+    Below is an example of adding a <b>Function</b> to the dashR "file" Context.
+</p>
+
+<pre class="language-javascript ">
+
+// add a new function called "media" to the "app" Context of dashR
+dashR("file")["process"] = function (text) {
+    return dashR("file").clear(text);
+}             
+
+// call the function
+var processed = dashR("file").process(text);</pre>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>

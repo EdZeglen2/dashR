@@ -1,0 +1,86 @@
+
+<span class="heading-md">The "xml" Context</span>
+<hr />
+
+<p class="text-page">
+    The "xml" Context of dashR is an extension Context that you may optionally include for changing XML into JSON. 
+</p>
+
+<p class="text-danger">
+    Use of this context is rare and thus it is NOT inclued in the extensions.js file. You must include it manually with a script tag.
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>xml</b>")</span>.<span class="method">json</span> (<span class="param">xml</span>, <span class="param">tab</span>[optional]);
+            <ul>
+                <li>This function returns a JS Object of the <b>xml</b> passed in.</li>
+                <li>The parameter <b>tab</b> is an optional tab character for the output.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .json</span>
+        <hr />
+
+<b>JavaScript</b>
+
+<pre class="language-javascript">
+
+// from a file
+
+var xml = dashR("file").load("c:\\file.xml");
+var jsonObj = dashR("xml").json(xml);
+
+// from an URL
+
+$.ajax({
+    url : url,
+    type: "GET",
+    dataType: "xml",
+    success: function (xml)) {
+        // fnSuccess(xml);
+        var data = dashR("xml").json(xml);
+    }
+});
+
+</pre>            
+
+    </div>
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>xml</b>")</span>.<span class="method">parseXml</span> (<span class="param">xml</span>);
+            <ul>
+                <li>This function returns a DOM Object of the <b>xml</b> passed in.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .parseXml</span>
+        <hr />
+
+<b>JavaScript</b>
+
+<pre class="language-javascript">
+
+// from a file
+
+var xml = dashR("file").load("c:\\file.xml");
+var dom = dashR("xml").parseXml(xml);
+var json = dashR("xml").xml2json(dom);
+
+</pre>            
+
+    </div>    
+            
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-30 by ECZ</div>
+

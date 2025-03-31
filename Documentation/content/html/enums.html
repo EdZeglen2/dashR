@@ -1,0 +1,57 @@
+<span class="heading-md">dashR Enums</span>
+<hr />
+
+<p class="text-page">
+    dashR Enums add to the <b>window</b> global scope and are available from any <b>window</b> JavaScript code (including dashR). 
+    Simply add an enums array to your Context to define your custom Enums.
+</p>
+
+<span class="heading-sm">Example use of Enums in a Context</span>
+<hr />
+
+
+    <hr />
+
+<pre class="language-javascript">
+    dashR().addContext({
+        name: "color-picker",
+        enums: [
+            { 
+                name: "Color", 
+                values: {
+                    RED: 0,
+                    GREEN: 1,
+                    YELLOW: 2
+                }
+            }
+        ],
+        js: {
+            index: 0,
+            init: function () {
+                // default the index to green.
+                index = Color.GREEN;
+            },
+            picked: function (color)  {
+                if (color == COLOR.RED) {
+                    // picked RED
+                }
+            }
+        }
+    })
+</pre>
+
+<span class="heading-sm">Summary</span>
+<hr />
+
+<p class="text-page">
+    
+    <ul>
+        <li>Enums, like JavaScript are case sensitive, Color.RED and color.red are not the same.</li>
+        <li>Enums are not specific to the context that added them.</li>
+        <li>Enums exist in the .window global space and can be used from any functions or other Contexts</li>
+        <li>You should never use a <b>name</b> that already exists, instead, use dashes or underscore to keep things unique to your application.</li>
+    </ul>
+
+</p>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-11-02 by ECZ</div>

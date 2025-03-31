@@ -1,0 +1,71 @@
+body {
+    color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+    background-color: #fff;
+    background-image: url('../images/bg/cool-background.png');
+    /* background-size: 100% 100%; */
+    background-size: cover;
+    height:100%;
+}
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.row-sub {
+    padding-top: 16px;
+}
+
+/* for modals in view */
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.form-inline .form-control {
+    width: auto;
+}
+
+.form-inline .form-group {
+    display: inline-block;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #212529;
+    border-color: #212529;
+        
+}
+.btn-dark:hover { 
+    color: #000;
+    background-color: #eeeeee!important; 
+    border-color: #cccccc;
+    
+}
+
+.btn-dark:focus {
+    background-color: #212529;
+    color: #fff;
+        
+}
+
+.btn-dark:active{
+    background-color: #212529;
+    color: white;
+        
+}

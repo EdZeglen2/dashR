@@ -1,0 +1,119 @@
+
+<span class="heading-md">The "object" Context</span>
+<hr />
+
+<p class="text-page">
+    The "object" Context of dashR is an extension Context that you may optionally include for handling object related functions. 
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>object</b>")</span>.<span class="method">copy</span> (<span class="param">obj</span>);
+            <ul>
+                <li>This function returns a copy of an object.</li>
+                <li>The parameter <b>obj</b> is the object to be copied.</li>
+                <li>Why you may need or want to do this is due to data binding.</li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .copy</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+            // make me a user
+            var user = {
+                name: "fred",
+                address1: "1313 Mockingbird Lane"
+            }
+
+            // make me a copy
+            var selectedUser = dashR("object").copy(user);</pre>            
+
+    </div>
+
+    <hr />
+            
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>object</b>")</span>.<span class="method">is_empty</span> (<span class="param">obj</span>);
+            <ul>
+                <li>This function returns true or false if the <b></b> matches {}.</li>
+                <li>The parameter <b>obj</b> is the object to text.</li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .is_empty</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+            // An empty Object
+            var user = {}
+
+            // returns true
+            dashR("object").is_empty(user);</pre>            
+
+    </div>
+    
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>object</b>")</span>.<span class="method">map_to</span> (<span class="param">srcObj</span>, <span class="param">mapping</span>);
+            <ul>
+                <li>This function is for when you have a large object and you want a smaller object with only some of the copied properties of the large one.</li>
+                <li>The parameter <b>srcObj</b> is the object to copied properties and their values from.</li>
+                <li>The parameter <b>mapping</b> is an array of properties names you want copied into the returned object.</li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .map_to</span>
+        <hr />
+
+        <pre class="language-javascript">
+        var map = [
+            "name",
+            "contentPath",
+            "rootPath",
+            "savePath",
+            "noOfFiles"
+        ];               
+        
+        var masterObject = {
+            name: "name",
+            contentPath: "contentPath",
+            junk1: "junk1",
+            junk2: "junk2",
+            rootPath: "rootPath",
+            savePath: "savePath",
+            junk3: "junk3",
+            noOfFiles: "noOfFiles",
+        }
+
+        var mapped = dashR("object").map_to(masterObject, map);
+
+        // mapped will be
+        {
+            name: masterObject["name"],
+            contentPath: masterObject["contentPath"],
+            rootPath: masterObject["rootPath"],
+            savePath: masterObject["savePath"],
+            noOfFiles: masterObject["noOfFiles"]
+        }
+</pre>            
+
+    </div>    
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

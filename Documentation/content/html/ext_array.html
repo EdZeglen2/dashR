@@ -1,0 +1,284 @@
+
+<span class="heading-md">The "array" Context</span>
+<hr />
+
+<p class="text-page">
+    The "array" Context of dashR is an extension Context that you may optionally include for handling array related functions. 
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">by</span>.[option]
+            <ul>
+                <li>This function is for sorting an array of objects by property.</li>
+                <li>The following property options included available by default:
+                    <div style="padding-left:8px;">
+                        <b>.name</b> <br>
+                        <b>.title</b> <br>
+                        <b>.date</b><br>
+                        <b>.order</b><br>
+                    </div>
+                </li>
+                <li>You can also extend <b>by</b> to include your own function for custom object properties</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .by</span>
+        <hr />            
+
+        <pre class="language-javascript">
+            // sorting the array of objects "by" each ones name property
+            this.items = this.items.sort( dashR("array").by.name );
+            this.items = this.items.sort( dashR("array").by.title );
+            this.items = this.items.sort( dashR("array").by.date );
+            this.items = this.items.sort( dashR("array").by.order );
+
+            // extending "by" with your own function
+            dashR("array").by["rank"] = function (a, b) {
+                var rankA = a.rank
+                var rankB = b.rank
+                if (rankA < rankB) {
+                    return -1; //rankA comes first
+                }
+                if (rankA > rankB) {
+                    return 1; // rankB comes first
+                }
+                return 0;  // names must be equal                
+            }
+
+            // using the new function to sort
+            this.items = this.items.sort( dashR("array").by.rank );
+        </pre>            
+
+    </div>    
+
+    <hr />           
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">sort</span> (<span class="param">arr</span>, <span class="param">prop</span>, <span class="param">fnc</span>[optional], <span class="param">dir</span>[optional]);
+            <ul>
+                <li>This function returns a new array of objects sorted on the object proprty optionally using using a function pre-sort.</li>
+                <li>The parameter <b>arr</b> is an array of objects that you want to sort by one object property.</li>
+                <li>The parameter <b>prop</b> is name of the object property to sort on.</li>
+                <li>The parameter <b>fnc</b> takes the value of the object property in <b>prop</b> and returns it for sorting. 
+                    <br>For instance you might want to .toLoweCase() the value for sorting</li>
+                <li>The parameter <b>dir</b> is ascending ("asc") or descending ("desc"), if not provided asc is assumed.</li>                    
+            </ul>
+
+        <span class="heading-sm">Example use of .sort</span>
+        <hr />            
+
+        <pre class="language-javascript">
+            // sorting the array of objects (ascending) "by" each ones upper-case'd name property
+            this.items = dashR("array").sort(this.items, "name", function (d) { 
+                return d.toUpperCase();
+            });
+        </pre>             
+
+    </div>    
+
+    <hr />           
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">find</span> (<span class="param">arr</span>, <span class="param">prop</span>, <span class="param">value</span>);
+            <ul>
+                <li>This function returns an object if found or null if not found in the <b>arr</b>>.</li>
+                <li>The parameter <b>arr</b> is an array of objects that you want to scan.</li>
+                <li>The parameter <b>prop</b> is the object property to scan.</li>
+                <li>The parameter <b>value</b> is the object property to scan for.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .find</span>
+        <hr />            
+
+        <pre class="language-javascript">
+            // get me this now
+            this.items = dashR("array").find(this.items, "name", "ted");
+        </pre>               
+
+    </div>
+
+    <hr />           
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">contains</span> (<span class="param">arr</span>, <span class="param">prop</span>, <span class="param">value</span>);
+            <ul>
+                <li>This function returns a boolean value of true if the object exists in the <b>arr</b> or false if not.</li>
+                <li>The parameter <b>arr</b> is an array of objects that you want to scan.</li>
+                <li>The parameter <b>prop</b> is the object property to scan.</li>
+                <li>The parameter <b>value</b> is the object property to scan for.</li>
+                <li>You could also use if find above; ex. (dashR("array").find(arr, "name", "ted") == null) { }</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .contains</span>
+        <hr />            
+
+        <pre class="language-javascript">
+            // if its not in there add it.
+            if (!dashR("array").contains(this.items, "name", "ted")) {
+                this.items.push({
+                    name: "ted"
+                })
+            }            
+        </pre>             
+
+    </div>
+    
+    <hr />           
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">remove</span> (<span class="param">items</span>, <span class="param">item</span>);
+            <ul>
+                <li>This function returns a new array with the specified item removed from it.</li>
+                <li>The parameter <b>items</b> is an array that you want to remove the item from.</li>
+                <li>The parameter <b>item</b> is the item to remove.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .remove</span>
+        <hr />            
+
+        <pre class="language-javascript">
+            // get rid of it
+            this.items = dashR("array").remove(this.items, item);
+        </pre>             
+
+    </div>    
+
+    <hr />           
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">swap</span>
+            <ul>
+                <li>The following methods are included
+                    <div style="padding-left:8px;">
+                        <b>.indexes</b>(arr, fromIndex, toIndex)<br>
+                        <b>.items</b>(items, item, direction)<br>
+                        <b>.prop</b>(arr, direction, prop, value)
+                    </div>
+                </li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .swap methods</span>
+        <hr />            
+
+        <pre class="language-javascript">
+            [to do]
+        </pre>                 
+
+    </div>    
+
+    <hr />           
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">move</span> (<span class="param">arr</span>, <span class="param">fromIndex</span>, <span class="param">toIndex</span>);
+            <ul>
+                <li>This function moves and item inside an array from one index to another.</li>
+                <li>The parameter <b>arr</b> is an array.</li>
+                <li>The parameter <b>fromIndex</b> is the items old index.</li>
+                <li>The parameter <b>toIndex</b> is the items new index.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .move</span>
+        <hr />            
+
+        <pre class="language-javascript">
+            var this.items = [1, 2, 3, 4, 5]
+
+            // should change it to 2, 3, 1, 4, 5 
+            this.items = dashR("array").move(this.items, 0, 2);
+        </pre>                 
+
+    </div>
+
+    <hr />           
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">move_item</span> (<span class="param">items</span>, <span class="param">item</span>, <span class="param">direction</span><span style="color:red;">[required]</span>);
+            <ul>
+                <li>This function removes and item up or down inside an array.</li>
+                <li>The parameter <b>items</b> is an array.</li>
+                <li>The parameter <b>item</b> is the item to move.</li>
+                <li>The parameter <b>direction</b> is the direction to move the item (up or down).></li>
+            </ul>
+
+        <span class="heading-sm">Example use of .move_item</span>
+        <hr />            
+
+        <pre class="language-javascript">
+            var this.items = [
+                { name: "ted"},
+                { name: "fred"},
+                { name: "ed"},
+                { name: "jed"},
+            ]
+
+            var item = this.items[2];
+
+            // move "ed" up one position.
+            dashR("array").move_item(this.items, item, "up");
+            // should now be ted, ed, fred, jed
+        </pre>                             
+
+    </div>                
+
+    <hr />
+
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>array</b>")</span>.<span class="method">duplicates</span>.[option]
+            <ul>
+                <li>This function is for removing duplicate entries from an array.</li>
+                <li>The following property options included available by default:
+                    <div style="padding-left:8px;">
+                        <b>.remove (arr)</b> <br>
+                        <b>.remove_by_property (arr, prop)</b> <br>
+                    </div>
+                </li>
+                <li>You can also extend <b>duplicates</b> to include your own function for custom object properties</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .duplicates</span>
+        <hr />            
+
+        <pre class="language-javascript">
+
+            var items = [1, 2, 3, 3, 4, 5, 6, 6, 7, 8, 9, 10, 2];
+
+            // .remove
+            items = dashR("array").duplicates.remove(items);
+            // items should be: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+            // .remove_by_property
+            var users = [
+                { name: "ed" },
+                { name: "ted" },
+                { name: "ted" },
+                { name: "jed" },
+                { name: "jed" },
+                { name: "fred" }
+            ];
+
+            users = dashR("array").duplicates.remove_by_property(users, "name");
+            /* users should be:  [
+                { name: "ed" },
+                { name: "ted" },
+                { name: "jed" },
+                { name: "fred" }
+            ];
+            */
+
+        </pre>            
+
+    </div>    
+
+</p>
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

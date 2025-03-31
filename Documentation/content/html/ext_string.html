@@ -1,0 +1,117 @@
+
+<span class="heading-md">The "string" Extension</span>
+<hr />
+
+<p class="text-page">
+    This codebase extends the basic "string" Context of dashR with more optional functions for your applications.
+       
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <!-- <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>string</b>")</span>.<span class="method">proper_case</span> (<span class="param">text</span>);
+            <ul>
+                <li>This function fixes given text to "proper" case.</li>
+                <li>The parameter <b>text</b> is the text to fix.</li>
+                <li>This can fail on some text inputs. It is not prefect or fool-proof.</li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .proper_case</span>
+        <hr />
+
+        <pre class="language-javascript">
+        var movieName = "HOW TO BEAT THE HIGH COST OF LIVING";
+        movieName = dashR("string").proper_case(movieName);
+        console.log(movieName);
+        // should be: The High Cost of Living</pre>            
+
+    </div>
+
+    <hr /> -->
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>string</b>")</span>.<span class="method">clean</span> (<span class="param">text</span>);
+            <ul>
+                <li>This function removes ASCII characters greater than ASCI Code 127.</li>
+                <li>The parameter <b>text</b> is the text to clean.</li>
+                <li>This should remove the dreaded BOM character and other potential problem characters.</li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .clean</span>
+        <hr />
+
+        <pre class="language-javascript">
+        // Clean it
+        var fileText = dashR("string").clean(fileText);
+    
+        // Save it
+        dashR("file").save("c:\\myfile.text", fileText);</pre>            
+
+    </div>    
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>string-ext</b>")</span>.<span class="method">starts_with</span> (<span class="param">text</span>);
+            <ul>
+                <li>This function returns true if the <b>text</b> starts with <b>find</b>.</li>
+                <li>The parameter <b>text</b> is the text to test.</li>
+                <li>The parameter <b>find</b> is the text to look for.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .starts_with</span>
+        <hr />
+
+        <pre class="language-javascript">
+        var someText = "This is some Text";
+        var startsWithIs = dashR("string").starts_with(someText, "is"); 
+        var startsWithThis = dashR("string").starts_with(someText, "this");
+        
+        // startsWithIs = false
+        // startsWithThis = true</pre>
+        
+
+    </div>    
+            
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>string</b>")</span>.<span class="method">ends_with</span> (<span class="param">text</span>);
+            <ul>
+                <li>This function returns true if the <b>text</b> ends with <b>find</b>.</li>
+                <li>The parameter <b>text</b> is the text to test.</li>
+                <li>The parameter <b>find</b> is the text to look for.</li>
+                
+            </ul>
+
+        <span class="heading-sm">Example use of .ends_with</span>
+        <hr />
+
+        <pre class="language-javascript">
+        var someText = "This is some Text";
+        var endsWithIs = dashR("string").ends_with(someText, "is"); 
+        var endsWithText = dashR("string").ends_with(someText, "text");
+        
+        // endsWithIs = false
+        // endsWithText = true            
+        </pre>            
+
+    </div>   
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

@@ -1,0 +1,108 @@
+
+<span class="heading-md">The "path" Context</span>
+<hr />
+
+<p class="text-page">
+    The "path" Context of dashR is included for handling file paths. It automatically addes \ characters where needed.
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>path</b>")</span>.<span class="method">combine</span> (<span class="param">arr</span>[spec1, spec2, spec3]);
+            <ul>
+                <li>The parameter <b>arr</b> is an array of string(s) to concatenate into a path.</li>
+            </ul>
+
+    </div>
+    
+    <span class="heading-sm">Example use of .combine</span>
+    <hr />
+
+    <pre class="language-javascript">
+
+    var folder = "c:\\mystuff";
+    var subFolder = "mydocuments"
+    var fileName = "mine.txt";
+
+    // load my obj or return an empty one.
+    var fileSpec = dashR("path").combine([folder, subFolder, fileName]);
+
+    console.log(fileSpec);
+    c:\\mystuff\\mydocuments\\mine.txt</pre>    
+
+    <hr />    
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>path</b>")</span>.<span class="method">relative</span> (<span class="param">from</span>, <span class="param">to</span>);
+            <ul>
+                <li>This functions returns a new path that is relative from the <b>from</b> folder.</li>
+            </ul>
+
+    </div>
+
+    <span class="heading-sm">Example use of .relative</span>
+    <hr />
+
+    <pre class="language-javascript">
+
+    var folder = "c:\\Dev\\Apps\\Basic";    
+    var fileSpec = dashR("path").relative(folder, "..\\..\\Testing\\file.txt");
+
+    console.log(fileSpec);
+    c:\Dev\Testinbg\file.txt</pre>       
+
+    <hr />    
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>path</b>")</span>.<span class="method">map.for</span> (<span class="param">alias</span>[required], <span class="param">fileSpec</span>[optional]);
+            <ul>
+                <li>Map is an object for saving file specs (paths/fileNames) to reference by <b>alias</b>.</li>
+                <li>The <b>alias</b> is the file specs handle to reference it by</li>
+                <li>The <b>fileSpec</b> is the full path and filename for the file (including the file extension).</li>
+                <li>If only the <b>alias</b> is provided it returns the filespec, if both are porvided it saves it.</li>
+                <li>The App Object containts one of these objects built in with the name <b>fMap</b>. See Below</li>
+            </ul>
+
+    </div>
+
+    <span class="heading-sm">Example use of .map</span>
+    <hr />
+
+<pre class="language-javascript">
+
+    var fMap = new dashR("path").map();
+    fMap.for("undo", "N:\\storage1\\rename_undo.json");    
+
+    var undoFileSpec = fMap.for("undo");
+    // undoFileSpec = N:\\storage1\\rename_undo.json
+
+    dashR("file").delete(fMap.for("undo"));
+
+    // 
+    var dashRApp = dashR().newApp({
+        ...
+    })
+
+    dashRApp.fMap("text", "test.txt");
+    var fText = fMap.spec("text"); 
+    // should be test.txt
+
+    dashRApp.fMap("text", "C:\\desktop\\test.txt");
+    var fText = fMap.for("text"); 
+    // should be c:\\Desktop\\test.txt
+
+</pre>         
+
+</p>
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+

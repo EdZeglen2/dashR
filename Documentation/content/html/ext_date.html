@@ -1,0 +1,104 @@
+
+<span class="heading-md">The "date" Context</span>
+<hr />
+
+<p class="text-page">
+    The "date" Context of dashR is an extension Context that you may optionally include for handling date related functions. 
+    This is included via in the <b>dashR-DateTime</b> extension.
+    
+</p>
+
+<span class="heading-sm">Included Methods</span>
+<hr />
+
+<p class="text-page">
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>date</b>")</span>.<span class="method">is_date</span> (<span class="param">obj</span>);
+            <ul>
+                <li>The parameter <b>obj</b> is the obj to test.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .is_date</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+            var items = [];
+
+            var stringText = "10-09-2024";
+
+            if (dashR("date").is_date(stringText)) {
+                console.log("its a date!");
+            } else {
+                // its not a date! :-(
+            }
+
+            if (dashR("date").is_date(items)) {
+                console.log("its a date!");
+            } else {
+                // its not a date! :-(
+            }            
+
+        </pre>            
+
+    </div>
+
+    <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>date</b>")</span>.<span class="method">format</span> (<span class="param">text</span>, <span class="param">format</span>);
+            <ul>
+                <li>The parameter <b>text</b> is the text to make a date from.</li>
+                <li>The parameter <b>format</b> is how to format the date returned.</li>
+                <li>formats include:
+                    <div style="padding-left:16px;">
+                        <b>"mm-dd-yyyy"</b><br>
+                        <b>"mm/dd/yyyy"</b><br>
+                        <b>"mm/dd/yyyy hh:mm:ss ampm"</b><br>
+                        <b>"day mon dd yyyy"</b>
+                    </div>
+                    
+                </li>
+            </ul>
+
+        <span class="heading-sm">Example use of .format</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+        var today = new Date();
+        console.log(dashR("date").format(today, "mm-dd-yyyy"));
+        \\ returns: 10-09-2024 </pre>            
+
+    </div>    
+
+  <hr />
+
+    <div style="padding:10px;">
+
+        <span class="dashr">dashR("<b>date</b>")</span>.<span class="method">from</span> (<span class="param">jsonStrDate</span>);
+            <ul>
+                <li>The parameter <b>jsonStrDate</b> is the MS JSON text date example: /Date(1731506129972)/.</li>
+            </ul>
+
+        <span class="heading-sm">Example use of .from</span>
+        <hr />
+
+        <pre class="language-javascript">
+
+        var today = "/Date(1731506129972)/";
+        console.log(dashR("date").from(today));
+        \\ returns: 10-09-2024 </pre>            
+
+    </div>    
+  
+
+</p>
+
+
+
+<div class="doc-footer"><i class="fa fa-calendar"></i> dashR Documentation 2024-10-10 by ECZ</div>
+
