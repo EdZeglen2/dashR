@@ -1,0 +1,1 @@
+void 0!==window.dashR&&dashR().addContext({name:"object",js:{copy:function(n){return JSON.parse(JSON.stringify(n))},is_empty:function(n){return JSON.stringify(n)==JSON.stringify({})},map_to:function(n,t){var i={};for(p in n)i[t[p]]=n[p];return i}}});

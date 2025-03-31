@@ -1,0 +1,1 @@
+void 0!==window.dashR&&dashR().addContext({name:"math",js:{random_integer:function(n,o){return Math.floor(Math.random()*(o-n+1))+n},function2:function(){},function3:function(){}}});

@@ -1,0 +1,1 @@
+void 0!==window.dashR&&dashR().addContext({name:"hta",js:{command_line:function(n){var a=!1,h="",r=[];for(c in n){var t=n[c];" "==t?a?h+=t:(""!=h&&r.push(h),h=""):'"'==t?a=!a:h+=t}h.length>0&&r.push(h);for(var d=[],o=1;o<r.length;o++)d.push(r[o].trim());return d}}});

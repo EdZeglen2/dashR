@@ -1,0 +1,1 @@
+void 0!==window.dashR&&(dashR("string").clean=function(t){for(var n="",e=0;e<t.length;e++)t.charCodeAt(e)<=127&&(n+=t.charAt(e));return n},dashR("string").starts_with=function(t,n){return 0===t.toLowerCase().lastIndexOf(n.toLowerCase(),0)},dashR("string").ends_with=function(t,n){return-1!==t.toLowerCase().indexOf(n.toLowerCase(),t.length-n.length)});

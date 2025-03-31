@@ -1,0 +1,1 @@
+type *-min.js > extensions.js
