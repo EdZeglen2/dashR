@@ -1,0 +1,36 @@
+
+
+    .custom-selector {
+        border-radius: 3px;
+        border: 1px solid #cccccc;
+        background-color:white;
+        cursor: pointer;
+        padding: 6px;
+        position: absolute;     
+        width:87%;
+        height:68px;
+    }
+
+    .custom-selector-selected {
+        color:black;
+    }
+
+    .custom-selector-drop {
+        border-top:1px solid #ccc;
+        background-color: white;
+        display:none;
+        position: relative;
+        overflow-y: scroll;
+        height:272px;
+        z-index: 100000;
+    }
+
+    .custom-selector-option {    
+        background-color:white;
+        color:black;
+    }
+
+    .custom-selector-option:hover {
+        background-color:#dddddd;
+        color:#333333;
+    }

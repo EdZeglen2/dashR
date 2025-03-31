@@ -1,0 +1,1 @@
+void 0!==window.dashR&&(dashR("file").bytes_to_size=function(i){if(null==i)return"0 B";for(var n=["B","KB","MB","GB","TB"],t=0;i>=1024&&++t<n.length;)i/=1024;return i.toLocaleString("en-US",{minimumFractionDigits:0})+" "+n[t]});

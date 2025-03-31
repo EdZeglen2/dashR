@@ -1,0 +1,32 @@
+
+                // https://github.com/route4me/route4me-vbscript-sdk/blob/master/Route4Me.vbs#L1
+
+                var SXH_SERVER_CERT_IGNORE_ALL_SERVER_ERRORS = 13056;
+                var WHR_EnableRedirects = 6;
+
+                var oXMLHTTP = new ActiveXObject("MSXML2.ServerXMLHTTP");
+
+                // var oXMLHTTP = new ActiveXObject("WINHTTP.WinHTTPRequest.5.1");
+                // var oXMLDoc = new ActiveXObject("MSXML2.DOMDocument")
+                // var optvalue = oXMLHTTP.getOption(2);
+                // console.log(optvalue);          
+
+                strEnvelope = "access_token=02b9lqymd53fuqrugrkdrj0h&subject=test&text=fred&success_url=&error_url=";
+
+                oXMLHTTP.open("POST", "https://www.invotes.com/send", false);
+
+                oXMLHTTP.setOption (2, SXH_SERVER_CERT_IGNORE_ALL_SERVER_ERRORS);
+               // oXMLHTTP.Option(WHR_EnableRedirects) = false;
+                oXMLHTTP.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                //oXMLHTTP.setRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0");
+                oXMLHTTP.setRequestHeader("Content-Length", strEnvelope.length);
+                oXMLHTTP.send(strEnvelope);
+
+                //var szResponse = oXMLHTTP.responseText
+
+                console.log("S1:" + oXMLHTTP.status);       "200"
+                console.log("S2:" + oXMLHTTP.statusText);   "OK"
+
+                if (oXMLHTTP.status == 200) {
+                    alert("Sent.")
+                }
